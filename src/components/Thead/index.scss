@@ -1,0 +1,227 @@
+.th {
+  height: 45px;
+  line-height: 2;
+  position: relative;
+  background: #e7ecf5;
+  z-index: 15;
+  text-align: left;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  border-right: 0;
+  border-top: 0;
+  border-right: 1px solid white;
+  transition: width ease .5s, background ease .5s;
+  &.disabled {
+    pointer-events: none;
+    span {
+      background: #cccccc;
+      opacity: .5;
+    }
+  }
+  &.highlight_spreadsheet {
+    background: #d5ddec;
+  }
+  span {
+    display: block;
+    width: calc(100% - 30px);
+  }
+}
+.resize {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 43px;
+  background: #7d8ba5;
+  width: 5px;
+  padding: 0;
+  border: 0;
+  cursor: col-resize;
+  box-shadow: none;
+  outline: none;
+  opacity: 0;
+  transition: opacity ease .5s;
+  &:hover {
+    opacity: 1;
+  }
+  &:after {
+    content: '';
+    display: block;
+    height: var(--dragHeaderHeight);
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px dashed #7d8ba5;
+    opacity: 0;
+    visibility: hidden;
+  }
+  &.active {
+    opacity: 1;
+    position: fixed;
+    top: auto;
+    &:after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+.submenu_wrap {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  max-width: 180px;
+  min-width: 180px;
+  background: white;
+  z-index: 20;
+  padding: 0 0 0 0;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+  button {
+    display: block;
+    height: 30px;
+    line-height: 20px;
+    padding: 4px 8px;
+    margin: 7px auto;
+    text-align: center;
+    border-radius: 4px;
+    background: white;
+    border: 1px solid #eee;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      background: #e7ecf5;
+    }
+    &:focus {
+      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .menu_option {
+    background: #eee;
+    margin: 7px auto 0;
+    padding: 10px 8px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    h3 {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1;
+      margin: 0;
+    }
+    select {
+      display: block;
+      width: 100%;
+      margin: 15px auto;
+      background: white;
+    }
+  }
+}
+
+.button_submenu {
+  position: absolute;
+  right: 10px;
+  width: 10px;
+  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  outline: none;
+  border: 0;
+  padding: 0;
+  &-2 {
+    right: 10px;
+    & + .button_submenu {
+      right: 25px;
+    }
+  }
+  cursor: pointer;
+  .sort{
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 2px;
+    transform: rotate(0deg);
+    font-size: 16px;
+    opacity: .4;
+    transition: all ease .5s;
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 5px;
+      background: #000;
+      transform: rotate(45deg) translate(0px, -1px);
+    }
+    &:after {
+      transform: rotate(135deg) translate(0px, 3px);
+    }
+    &+.sort {
+      top: 25px;
+      transform: rotate(180deg);
+      right: 3px;
+    }
+  }
+  &.sort_Z .sort{
+    opacity: 1;
+    &:after,
+    &:before {
+      background: #000;
+    }
+    &+.sort {
+      opacity: .4;
+      &:before,
+      &:after {
+        background: #000;
+      }
+    }
+  }
+  &.sort_A .sort + .sort {
+    opacity: 1;
+    &:after,
+    &:before {
+      background: #000;
+    }
+  }
+  .icon_menu {
+    width: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    .bullet {
+      display: block;
+      width: 3px;
+      height: 3px;
+      margin: 0 auto;
+      background: #555;
+      border-radius: 50%;
+      transition: all ease .5s;
+      &-2 {
+        margin: 2px auto;
+      }
+    }
+  }
+  &.active .icon_menu .bullet{
+    background: #000;
+    &-2 {
+      background: #000;
+    }
+  }
+}
+
+.index {
+  width: 20px;
+  padding: 0;
+  text-align: center;
+  border-top: 1px solid #e6ecf6;
+  border-bottom: 1px solid #e6ecf6;
+  border-right: 1px solid #e6ecf6;
+  box-sizing: border-box;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

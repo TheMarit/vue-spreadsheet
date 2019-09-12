@@ -32,7 +32,7 @@
 
 <script>
 /* eslint-disable */
-import VueTable from './components/VueTable.vue';
+import VueTable from './components/VueTable/index.vue';
 import exempleData from './data';
 
 export default {
