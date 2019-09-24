@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Thead from '@/components/Thead.vue';
+import Thead from '@/components/Thead/index.vue';
 
 // data
 import exempleData from '@/data';

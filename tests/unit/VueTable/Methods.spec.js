@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import VueTable from '@/components/VueTable.vue';
+import VueTable from '@/components/VueTable/index.vue';
 
 // data
 import exempleData from '@/data';
@@ -78,25 +78,6 @@ describe('VueTable', () => {
       expect(tBody.tbodyData[2].h).toBeTruthy();
       expect(tBody.tbodyData[3].h).toBeTruthy();
       expect(tBody.tbodyData[4].h).toBeTruthy();
-    });
-  });
-
-  describe('disabledEvent', () => {
-    test('Disabled Col : false | with disableCells', () => {
-      const fakeData = { disabled: false };
-      expect(wrapper.vm.disabledEvent(fakeData, 'a')).toBeTruthy();
-    });
-    test('Disabled Col : true | with disableCells', () => {
-      const fakeData = { disabled: true };
-      expect(wrapper.vm.disabledEvent(fakeData, 'a')).toBeFalsy();
-    });
-    test('Disabled Col : false | without disableCells', () => {
-      const fakeData = { disabled: false };
-      expect(wrapper.vm.disabledEvent(fakeData, 'b')).toBeTruthy();
-    });
-    test('Disabled Col : true | without disableCells', () => {
-      const fakeData = { disabled: true };
-      expect(wrapper.vm.disabledEvent(fakeData, 'b')).toBeFalsy();
     });
   });
 
