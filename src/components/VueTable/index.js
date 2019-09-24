@@ -1,6 +1,10 @@
 import VueThead from '../Thead/index.vue';
 import VueTbody from '../Tbody/index.vue';
-import vueTableHelper from './helpers';
+// Helpers
+import vueTableHelper from './helpers/other';
+import vueTableHelperCopyPaste from './helpers/copyPase';
+import vueTableHelperDragToFill from './helpers/dragToFill';
+import vueTableHelperMoveOnTable from './helpers/moveOnTable';
 
 const Fuse = require('fuse.js');
 
@@ -224,29 +228,29 @@ export default {
     },
     // Copy / Paste
     copyStoreData(params) {
-      vueTableHelper(this).copyStoreData(params);
+      vueTableHelperCopyPaste(this).copyStoreData(params);
     },
     pasteReplaceData() {
-      vueTableHelper(this).pasteReplaceData();
+      vueTableHelperCopyPaste(this).pasteReplaceData();
     },
     replacePasteData(col, header, incrementRow, currentHeader) {
-      vueTableHelper(this).replacePasteData(col, header, incrementRow, currentHeader);
+      vueTableHelperCopyPaste(this).replacePasteData(col, header, incrementRow, currentHeader);
     },
     modifyMultipleCell(params) {
-      vueTableHelper(this).modifyMultipleCell(params);
+      vueTableHelperCopyPaste(this).modifyMultipleCell(params);
     },
     setRectangleSelection(colMin, colMax, rowMin, rowMax) {
-      vueTableHelper(this).setRectangleSelection(colMin, colMax, rowMin, rowMax);
+      vueTableHelperCopyPaste(this).setRectangleSelection(colMin, colMax, rowMin, rowMax);
     },
     // drag To Fill
     handleDownDragToFill(event, header, col, rowIndex) {
-      vueTableHelper(this).handleDownDragToFill(event, header, col, rowIndex);
+      vueTableHelperDragToFill(this).handleDownDragToFill(event, header, col, rowIndex);
     },
     handleMoveDragToFill(event, header, col, rowIndex, colIndex) {
-      vueTableHelper(this).handleMoveDragToFill(event, header, col, rowIndex, colIndex);
+      vueTableHelperDragToFill(this).handleMoveDragToFill(event, header, col, rowIndex, colIndex);
     },
     handleUpDragToFill(event, header, rowIndex, colIndex) {
-      vueTableHelper(this).handleUpDragToFill(event, header, rowIndex, colIndex);
+      vueTableHelperDragToFill(this).handleUpDragToFill(event, header, rowIndex, colIndex);
     },
     // On click on td
     handleTbodyTdClick(event, col, header, rowIndex, colIndex, type) {
@@ -285,24 +289,25 @@ export default {
     handleTBodyContextMenu(event, header, rowIndex, colIndex) {
       vueTableHelper(this).handleTBodyContextMenu(event, header, rowIndex, colIndex);
     },
+    // move on table
+    moveOnSelect(event) {
+      vueTableHelperMoveOnTable(this).moveOnSelect(event);
+    },
+    moveOnTable(event, colIndex, rowIndex) {
+      vueTableHelperMoveOnTable(this).moveOnTable(event, colIndex, rowIndex);
+    },
+    pressShiftMultipleCell(event, h, rowMax, rowIndex, colMax, colIndex) {
+      vueTableHelperMoveOnTable(this).pressShiftMultipleCell(event, h, rowMax, rowIndex, colMax, colIndex);
+    },
+    moveKeyup(event) {
+      vueTableHelperMoveOnTable(this).moveKeyup(event);
+    },
+    moveKeydown(event) {
+      vueTableHelperMoveOnTable(this).moveKeydown(event);
+    },
     // thead
     handleTheadContextMenu() {
       this.submenuStatusTbody = false;
-    },
-    moveOnSelect(event) {
-      vueTableHelper(this).moveOnSelect(event);
-    },
-    moveOnTable(event, colIndex, rowIndex) {
-      vueTableHelper(this).moveOnTable(event, colIndex, rowIndex);
-    },
-    pressShiftMultipleCell(event, h, rowMax, rowIndex, colMax, colIndex) {
-      vueTableHelper(this).pressShiftMultipleCell(event, h, rowMax, rowIndex, colMax, colIndex);
-    },
-    moveKeyup(event) {
-      vueTableHelper(this).moveKeyup(event);
-    },
-    moveKeydown(event) {
-      vueTableHelper(this).moveKeydown(event);
     },
   },
 };
