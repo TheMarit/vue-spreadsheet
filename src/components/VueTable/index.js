@@ -2,9 +2,10 @@ import VueThead from '../Thead/index.vue';
 import VueTbody from '../Tbody/index.vue';
 // Helpers
 import vueTableHelper from './helpers/other';
-import vueTableHelperCopyPaste from './helpers/copyPase';
+import vueTableHelperCopyPaste from './helpers/copyPaste';
 import vueTableHelperDragToFill from './helpers/dragToFill';
 import vueTableHelperMoveOnTable from './helpers/moveOnTable';
+import vueTableHelperRollback from './helpers/rollback';
 
 const Fuse = require('fuse.js');
 
@@ -161,13 +162,13 @@ export default {
       vueTableHelper(this).highlightTdAndThead(rowIndex, colIndex);
     },
     changeData(rowIndex, header) {
-      vueTableHelper(this).changeData(rowIndex, header);
+      vueTableHelperRollback(this).changeData(rowIndex, header);
     },
     rollBackUndo() {
-      vueTableHelper(this).rollBackUndo();
+      vueTableHelperRollback(this).rollBackUndo();
     },
     clearStoreUndo() {
-      vueTableHelper(this).clearStoreUndo();
+      vueTableHelperRollback(this).clearStoreUndo();
     },
     sorter(options) {
       vueTableHelper(this).sorter(options);
